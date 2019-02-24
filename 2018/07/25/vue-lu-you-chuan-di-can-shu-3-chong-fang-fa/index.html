@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 前端开发, zhanggangxia">
-    <meta name="description" content="分类: 前端开发 | zhanggangxia">
+    <meta name="keywords" content="Vue 路由传递参数 3种方法, zhanggangxia">
+    <meta name="description" content="Vue 路由传递参数 3种方法
+1、通过params来传递参数（本人常用）传递参数接收参数
+&amp;lt;li v-for=&amp;quot;article in articles&amp;quot; @click=&amp;quot;getDescribe(arti">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>分类: 前端开发 | zhanggangxia</title>
+    <title>Vue 路由传递参数 3种方法 | zhanggangxia</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -265,188 +267,368 @@
     </nav>
 </header>
 
-<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+            <div class="col s12 m12 l12">
                 <div class="brand">
-                    <div class="title center-align">
-                    
-                        ZHANGGANGXIA
-                    
-                    </div>
-
-                    <div class="description center-align">
-                    
-                        从来没有真正的绝境，只有心灵的迷途
-                    
+                    <div class="description center-align post-title">
+                        Vue 路由传递参数 3种方法
                     </div>
                 </div>
             </div>
         </div>
-        
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s6">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/javascript/" target="_blank">
+                                <span class="chip bg-color">javascript</span>
+                            </a>
+                        
+                            <a href="/tags/vue-vue-Router/" target="_blank">
+                                <span class="chip bg-color">vue - vue-Router</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s6 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/前端开发/" class="post-category" target="_blank">
+                                前端开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <span class="post-date">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-07-25
+                </span>
+
+                
+				
+				
+                    <span id="busuanzi_container_page_pv" class="post-read">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+				
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="Vue-路由传递参数-3种方法"><a href="#Vue-路由传递参数-3种方法" class="headerlink" title="Vue 路由传递参数 3种方法"></a>Vue 路由传递参数 3种方法</h3><hr>
+<h4 id="1、通过params来传递参数（本人常用）传递参数"><a href="#1、通过params来传递参数（本人常用）传递参数" class="headerlink" title="1、通过params来传递参数（本人常用）传递参数"></a>1、通过params来传递参数（本人常用）传递参数</h4><p>接收参数</p>
+<pre><code>&lt;li v-for=&quot;article in articles&quot; @click=&quot;getDescribe(article.id)&quot;&gt;
+</code></pre><h4 id="2、通过path跳转"><a href="#2、通过path跳转" class="headerlink" title="2、通过path跳转"></a>2、通过path跳转</h4><pre><code>      getDescribe(id) {
+        // 直接调用$router.push 实现携带参数的跳转
+        this.$router.push({
+          path: `/describe/${id}`,
+        })
+</code></pre><p>对应路由配置如下：</p>
+<pre><code>{
+     path: &#39;/describe/:id&#39;,
+     name: &#39;Describe&#39;,
+     component: Describe
+   }
+</code></pre><p>接收参数</p>
+<pre><code>$route.params.id
+</code></pre><h4 id="3、通过query传参-参数会显示在url后面？id-？"><a href="#3、通过query传参-参数会显示在url后面？id-？" class="headerlink" title="3、通过query传参 参数会显示在url后面？id=？"></a>3、通过query传参 参数会显示在url后面？id=？</h4><p>注意：页面之间的跳转使用query 不然的话刷新页面后会找不到参数</p>
+<pre><code> this.$router.push({
+  path: &#39;/describe&#39;,
+  query: {
+    id: id
+  }
+})
+</code></pre><p>对应的路由配置</p>
+<pre><code>   {
+     path: &#39;/describe&#39;,
+     name: &#39;Describe&#39;,
+     component: Describe
+   }
+</code></pre><p>接收参数</p>
+<pre><code>$route.query.id
+注意：route与router的区别
+</code></pre><p>$route为当前router跳转对象里面可以获取name、path、query、params等</p>
+<p>$router为VueRouter实例，想要导航到不同URL，则使用$router.push方法</p>
+<p>返回上一个history也是使用$router.go方法</p>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-// Dynamically switch banner pictures every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
 </script>
+            
 
-<main class="content">
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 
+<div id="article-share">
     
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
 
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/vue/" title="vue: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F9EBEA;">vue
-                        <span class="tag-length">1</span>
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                </a>
-                
-                
-                <a href="/categories/工具/" title="工具: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F5EEF8;">工具
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/前端开发/" title="前端开发: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active " style="background-color: #D5F5E3;">前端开发
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
+                    <a href="https://zhanggangxia.github.io" class="b-link-green">zhanggangxia</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/07/25/vue-lu-you-chuan-di-can-shu-3-chong-fang-fa/" class="b-link-green">Vue 路由传递参数 3种方法</a>
+                </p>
             </div>
         </div>
     </div>
-</div>
 
     
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/07/25/vue-lu-you-chuan-di-can-shu-3-chong-fang-fa/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Vue 路由传递参数 3种方法">
-                            
-                            <span class="card-title">Vue 路由传递参数 3种方法</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                Vue 路由传递参数 3种方法
-1、通过params来传递参数（本人常用）传递参数接收参数
-&lt;li v-for=&quot;artic
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/前端开发/" class="post-category" target="_blank">
-                                    前端开发
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+    
 
-                    
-                    <div class="card-action article-tags">
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/28/hello-world/">
+                    <div class="card-image">
                         
-                        <a href="/tags/javascript/" target="_blank">
-                            <span class="chip bg-color">javascript</span>
-                        </a>
                         
-                        <a href="/tags/vue-vue-Router/" target="_blank">
-                            <span class="chip bg-color">vue - vue-Router</span>
-                        </a>
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
+                        <span class="card-title">Hello World</span>
                     </div>
-                    
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            zhanggangxia
+                            
+                        </span>
+                    </div>
                 </div>
+                
             </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/07/16/es6-async-await/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="使用GitHub+Hexo快速搭建个人博客">
-                            
-                            <span class="card-title">使用GitHub+Hexo快速搭建个人博客</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary">
-                            
-                                ES6 async await
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/07/16/es6-async-await/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="使用GitHub+Hexo快速搭建个人博客">
+                        
+                        <span class="card-title">使用GitHub+Hexo快速搭建个人博客</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">ES6 async await
 浏览器遇到await 语句后，会先去执行外部的同步代码，之后再来处理await后面的函数的返回值。
-注意：a
-                            
-                        </div>
-                        <div class="publish-info">
+注意：async函数里面是从右往左执行的，因此会先执行右边的函数，之后再遇到await做处理。
+async </div>
+                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-16
                             </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/前端开发/" class="post-category" target="_blank">
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/前端开发/" class="post-category" target="_blank">
                                     前端开发
                                 </a>
-                                
-                                
-                            </span>
-                        </div>
+                            
+                            
+                        </span>
                     </div>
-
+                </div>
+                
+                <div class="card-action article-tags">
                     
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/javascript/" target="_blank">
-                            <span class="chip bg-color">javascript</span>
-                        </a>
-                        
-                        <a href="/tags/ES6/" target="_blank">
-                            <span class="chip bg-color">ES6</span>
-                        </a>
-                        
-                    </div>
+                    <a href="/tags/javascript/" target="_blank">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                    <a href="/tags/ES6/" target="_blank">
+                        <span class="chip bg-color">ES6</span>
+                    </a>
                     
                 </div>
+                
             </div>
-            
         </div>
-    </article>
+        
+    </div>
+</article>
+</div>
+
+
+    
+
 </main>
 
 

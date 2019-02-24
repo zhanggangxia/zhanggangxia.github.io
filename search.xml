@@ -74,6 +74,33 @@
     
     
     <entry>
+      <title>Vue 路由传递参数 3种方法</title>
+      <link href="/2018/07/25/vue-lu-you-chuan-di-can-shu-3-chong-fang-fa/"/>
+      <url>/2018/07/25/vue-lu-you-chuan-di-can-shu-3-chong-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Vue-路由传递参数-3种方法"><a href="#Vue-路由传递参数-3种方法" class="headerlink" title="Vue 路由传递参数 3种方法"></a>Vue 路由传递参数 3种方法</h3><hr><h4 id="1、通过params来传递参数（本人常用）传递参数"><a href="#1、通过params来传递参数（本人常用）传递参数" class="headerlink" title="1、通过params来传递参数（本人常用）传递参数"></a>1、通过params来传递参数（本人常用）传递参数</h4><p>接收参数</p><pre><code>&lt;li v-for=&quot;article in articles&quot; @click=&quot;getDescribe(article.id)&quot;&gt;</code></pre><h4 id="2、通过path跳转"><a href="#2、通过path跳转" class="headerlink" title="2、通过path跳转"></a>2、通过path跳转</h4><pre><code>      getDescribe(id) {        // 直接调用$router.push 实现携带参数的跳转        this.$router.push({          path: `/describe/${id}`,        })</code></pre><p>对应路由配置如下：</p><pre><code>{     path: &#39;/describe/:id&#39;,     name: &#39;Describe&#39;,     component: Describe   }</code></pre><p>接收参数</p><pre><code>$route.params.id</code></pre><h4 id="3、通过query传参-参数会显示在url后面？id-？"><a href="#3、通过query传参-参数会显示在url后面？id-？" class="headerlink" title="3、通过query传参 参数会显示在url后面？id=？"></a>3、通过query传参 参数会显示在url后面？id=？</h4><p>注意：页面之间的跳转使用query 不然的话刷新页面后会找不到参数</p><pre><code> this.$router.push({  path: &#39;/describe&#39;,  query: {    id: id  }})</code></pre><p>对应的路由配置</p><pre><code>   {     path: &#39;/describe&#39;,     name: &#39;Describe&#39;,     component: Describe   }</code></pre><p>接收参数</p><pre><code>$route.query.id注意：route与router的区别</code></pre><p>$route为当前router跳转对象里面可以获取name、path、query、params等</p><p>$router为VueRouter实例，想要导航到不同URL，则使用$router.push方法</p><p>返回上一个history也是使用$router.go方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
+            
+            <tag> vue - vue-Router </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用GitHub+Hexo快速搭建个人博客</title>
       <link href="/2018/07/16/es6-async-await/"/>
       <url>/2018/07/16/es6-async-await/</url>
